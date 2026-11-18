@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configurator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div class="app">
+  <aside class="panel" aria-label="Machine options">
+    <h1>Configure your plant</h1>
+    <div id="options"></div>
+    <section id="look">
+      <h2>Colors and finish</h2>
+      <div id="colors"></div>
+      <div class="field"><span>Finish</span>
+        <div class="seg"><button data-f="matte">Matte</button><button data-f="satin">Satin</button><button data-f="gloss">Gloss</button></div>
+      </div>
+    </section>
+  </aside>
+
+  <main id="stage">
+    <canvas id="view" role="img" aria-label="3D view of your configuration. Drag to rotate."></canvas>
+    <p id="status" class="nogl">Loading 3D model</p>
+
+    <button id="rearrange" class="btn" aria-pressed="false">Rearrange components</button>
+
+    <dl class="dims">
+      <dt>Height</dt><dd id="d-h"></dd><dd class="ft" id="d-h-ft"></dd>
+      <dt>Width</dt><dd id="d-w"></dd><dd class="ft" id="d-w-ft"></dd>
+      <dt>Length</dt><dd id="d-len" class="len"></dd><dd class="ft" id="d-len-ft"></dd>
+    </dl>
+
+    <div id="tray" class="tray" hidden>
+      <p>Drag units to reorder, or use the arrows. The unwinder and rewinder stay fixed.</p>
+      <ol id="chips"></ol>
+    </div>
+
+    <div class="actions">
+      <button id="reset" class="btn">Reset view</button>
+      <label class="bg">Background
+        <select id="bg"><option value="white">White, with summary</option><option value="transparent">Transparent</option></select>
+      </label>
+      <button id="export" class="btn primary">Export image</button>
+    </div>
+    <p class="hint">Drag to rotate. Click the view, then scroll to zoom.</p>
+  </main>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>
